@@ -97,10 +97,10 @@
 				align-items: center;
 			}
 
-			.hero-copy {
-				display: grid;
-				gap: 20px;
-			}
+		.hero-copy {
+			display: grid;
+			gap: 20px;
+		}
 
 			.eyebrow {
 				text-transform: uppercase;
@@ -116,12 +116,42 @@
 				margin: 0;
 			}
 
-			.hero p {
-				margin: 0;
-				font-size: 1.05rem;
-				color: var(--ink-subtle);
-				line-height: 1.7;
-			}
+		.hero p {
+			margin: 0;
+			font-size: 1.05rem;
+			color: var(--ink-subtle);
+			line-height: 1.7;
+		}
+
+		.actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 14px;
+			align-items: center;
+		}
+
+		.button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 12px 22px;
+			border-radius: 999px;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(241, 246, 244, 0.75));
+			color: var(--accent-strong);
+			text-decoration: none;
+			font-weight: 600;
+			border: 1px solid rgba(12, 142, 111, 0.35);
+			box-shadow: 0 18px 34px rgba(12, 142, 111, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+			backdrop-filter: blur(18px);
+			-webkit-backdrop-filter: blur(18px);
+			transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+		}
+
+		.button:hover {
+			transform: translateY(-1px);
+			border-color: rgba(12, 142, 111, 0.6);
+			box-shadow: 0 22px 42px rgba(12, 142, 111, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+		}
 
 			.card {
 				background: var(--paper-strong);
@@ -269,11 +299,14 @@
 					<h1>
 						Tokage is a lightweight macOS menu-bar app for real-time Codex token usage.
 					</h1>
-					<p>
-						Today, recent days, and month-to-date in one glance. Scans local Codex session logs for clean,
-						ccusage-style totals with one-click refresh.
-					</p>
+				<p>
+					Today, recent days, and month-to-date in one glance. Scans local Codex session logs for clean,
+					ccusage-style totals with one-click refresh.
+				</p>
+				<div class="actions">
+					<a class="button" href="/downloads/Tokage.dmg">Download for macOS</a>
 				</div>
+			</div>
 
 				<aside class="card">
 					<div class="card-content">
