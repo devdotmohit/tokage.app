@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getCollection("release-notes");
+  return entries.map((entry) => ({
+    params: { version: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{entry.data.title} Release Notes</title>
+  </head>
+  <body>
+    <main>
+      <h1>{entry.data.title} Release Notes</h1>
+      <Content />
+    </main>
+  </body>
+</html>

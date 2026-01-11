@@ -1,0 +1,311 @@
+---
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Tokage | Codex Usage Tracker for macOS</title>
+		<meta
+			name="description"
+			content="Tokage is a lightweight macOS menu-bar app that tracks your Codex token usage in real time without leaving your machine."
+		/>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;600&display=swap");
+
+			:root {
+				color-scheme: light;
+				--paper: #f5f0e6;
+				--paper-strong: #fbf8f1;
+				--ink: #0d141b;
+				--ink-subtle: #3b4551;
+				--ink-muted: #6a747f;
+				--accent: #0c8e6f;
+				--accent-strong: #075d4a;
+				--accent-glow: rgba(17, 141, 111, 0.18);
+				--shadow: 0 22px 60px rgba(13, 20, 27, 0.18);
+				--radius: 22px;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				min-height: 100vh;
+				font-family: "Space Grotesk", sans-serif;
+				color: var(--ink);
+				background: radial-gradient(circle at 12% 18%, rgba(9, 125, 97, 0.2), transparent 52%),
+					radial-gradient(circle at 86% 22%, rgba(224, 142, 46, 0.18), transparent 48%),
+					linear-gradient(120deg, #f4ede1 0%, #f0f7f5 52%, #fbf8f1 100%);
+				background-attachment: fixed;
+			}
+
+			main {
+				display: grid;
+				gap: 64px;
+				padding: 48px 6vw 96px;
+				max-width: 1180px;
+				margin: 0 auto;
+			}
+
+			header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 24px 6vw 0;
+				max-width: 1180px;
+				margin: 0 auto;
+			}
+
+			.logo {
+				font-weight: 600;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				font-size: 0.9rem;
+			}
+
+			.status-pill {
+				display: inline-flex;
+				gap: 10px;
+				align-items: center;
+				padding: 8px 14px;
+				border-radius: 999px;
+				background: rgba(13, 20, 27, 0.05);
+				font-size: 0.85rem;
+				color: var(--ink-muted);
+			}
+
+			.status-pill span {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 9px;
+				height: 9px;
+				background: var(--accent);
+				border-radius: 50%;
+				box-shadow: 0 0 0 5px rgba(12, 142, 111, 0.12);
+			}
+
+			.hero {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 48px;
+				align-items: center;
+			}
+
+			.hero-copy {
+				display: grid;
+				gap: 20px;
+			}
+
+			.eyebrow {
+				text-transform: uppercase;
+				letter-spacing: 0.16em;
+				font-size: 0.75rem;
+				color: var(--ink-muted);
+			}
+
+			.hero h1 {
+				font-family: "Fraunces", serif;
+				font-size: clamp(2.4rem, 4vw, 4rem);
+				line-height: 1.05;
+				margin: 0;
+			}
+
+			.hero p {
+				margin: 0;
+				font-size: 1.05rem;
+				color: var(--ink-subtle);
+				line-height: 1.7;
+			}
+
+			.card {
+				background: var(--paper-strong);
+				border-radius: var(--radius);
+				padding: 28px;
+				box-shadow: var(--shadow);
+				border: 1px solid rgba(13, 20, 27, 0.08);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.card::before {
+				content: "";
+				position: absolute;
+				inset: 16px;
+				border-radius: 18px;
+				background: radial-gradient(circle at top left, var(--accent-glow), transparent 65%);
+				opacity: 0.8;
+			}
+
+			.card-content {
+				position: relative;
+				display: grid;
+				gap: 20px;
+			}
+
+			.card h2 {
+				margin: 0;
+				font-size: 1.2rem;
+			}
+
+			.stat-grid {
+				display: grid;
+				gap: 14px;
+			}
+
+			.stat {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 12px 14px;
+				border-radius: 14px;
+				background: rgba(13, 20, 27, 0.04);
+				font-size: 0.95rem;
+			}
+
+			.stat strong {
+				font-weight: 600;
+				color: var(--accent-strong);
+			}
+
+			.stat small {
+				color: var(--ink-muted);
+			}
+
+			.feature-section {
+				display: grid;
+				gap: 18px;
+			}
+
+			.feature-section h2 {
+				margin: 0;
+				font-size: 1.2rem;
+				letter-spacing: 0.02em;
+			}
+
+			.feature-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: grid;
+				gap: 14px;
+			}
+
+			.feature-list li {
+				position: relative;
+				padding-left: 28px;
+				color: var(--ink-subtle);
+				line-height: 1.6;
+				animation: rise 0.65s ease both;
+				animation-delay: var(--delay, 0s);
+			}
+
+			.feature-list li::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0.35em;
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background: linear-gradient(140deg, var(--accent), #f0b165);
+				box-shadow: 0 0 0 6px rgba(12, 142, 111, 0.12);
+			}
+
+			.hero-copy,
+			.card {
+				animation: rise 0.8s ease both;
+			}
+
+			.card {
+				animation-delay: 0.1s;
+			}
+
+			@keyframes rise {
+				from {
+					opacity: 0;
+					transform: translateY(16px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 720px) {
+				header {
+					flex-direction: column;
+					gap: 12px;
+					align-items: flex-start;
+				}
+
+				main {
+					padding: 32px 6vw 80px;
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				* {
+					animation: none !important;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="logo">Tokage</div>
+			<div class="status-pill"><span></span>Local-only token tracker</div>
+		</header>
+
+		<main>
+			<section class="hero">
+				<div class="hero-copy">
+					<div class="eyebrow">Menu-bar utility for Codex</div>
+					<h1>
+						Tokage is a lightweight macOS menu-bar app for real-time Codex token usage.
+					</h1>
+					<p>
+						Today, recent days, and month-to-date in one glance. Scans local Codex session logs for clean,
+						ccusage-style totals with one-click refresh.
+					</p>
+				</div>
+
+				<aside class="card">
+					<div class="card-content">
+						<h2>Usage snapshot</h2>
+						<div class="stat-grid">
+							<div class="stat"><span>Today</span><strong>18,420 tokens</strong></div>
+							<div class="stat"><span>Yesterday</span><strong>22,902 tokens</strong></div>
+							<div class="stat">
+								<span>Month-to-date</span>
+								<strong>214,775 tokens</strong>
+							</div>
+						</div>
+						<div class="stat">
+							<span>Last refresh</span>
+							<small>Just now from ~/.codex/sessions</small>
+						</div>
+					</div>
+				</aside>
+			</section>
+
+			<section class="feature-section">
+				<h2>Key features</h2>
+				<ul class="feature-list">
+					<li style="--delay: 0.05s">Menu-bar first: dockless, always-on usage summary</li>
+					<li style="--delay: 0.1s">Daily breakdowns: input, cached, output, and reasoning tokens</li>
+					<li style="--delay: 0.15s">Recent history: yesterday plus five prior days at a glance</li>
+					<li style="--delay: 0.2s">Month-to-date totals: cumulative view for budgeting</li>
+					<li style="--delay: 0.25s">Accurate billing math: aligns with ccusage token normalization</li>
+					<li style="--delay: 0.3s">Efficient scanning: incremental parsing for fast refreshes</li>
+					<li style="--delay: 0.35s">Local-only data: reads ~/.codex/sessions and stays on your Mac</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
