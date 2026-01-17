@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <html lang="en">
@@ -38,9 +39,23 @@
 				min-height: 100vh;
 				font-family: "Space Grotesk", sans-serif;
 				color: var(--ink);
-				background: radial-gradient(circle at 12% 18%, rgba(9, 125, 97, 0.2), transparent 52%),
-					radial-gradient(circle at 86% 22%, rgba(224, 142, 46, 0.18), transparent 48%),
-					linear-gradient(120deg, #f4ede1 0%, #f0f7f5 52%, #fbf8f1 100%);
+				background:
+					radial-gradient(
+						circle at 12% 18%,
+						rgba(9, 125, 97, 0.2),
+						transparent 52%
+					),
+					radial-gradient(
+						circle at 86% 22%,
+						rgba(224, 142, 46, 0.18),
+						transparent 48%
+					),
+					linear-gradient(
+						120deg,
+						#f4ede1 0%,
+						#f0f7f5 52%,
+						#fbf8f1 100%
+					);
 				background-attachment: fixed;
 			}
 
@@ -97,10 +112,10 @@
 				align-items: center;
 			}
 
-		.hero-copy {
-			display: grid;
-			gap: 20px;
-		}
+			.hero-copy {
+				display: grid;
+				gap: 20px;
+			}
 
 			.eyebrow {
 				text-transform: uppercase;
@@ -116,42 +131,53 @@
 				margin: 0;
 			}
 
-		.hero p {
-			margin: 0;
-			font-size: 1.05rem;
-			color: var(--ink-subtle);
-			line-height: 1.7;
-		}
+			.hero p {
+				margin: 0;
+				font-size: 1.05rem;
+				color: var(--ink-subtle);
+				line-height: 1.7;
+			}
 
-		.actions {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 14px;
-			align-items: center;
-		}
+			.actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 14px;
+				align-items: center;
+			}
 
-		.button {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			padding: 12px 22px;
-			border-radius: 999px;
-			background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(241, 246, 244, 0.75));
-			color: var(--accent-strong);
-			text-decoration: none;
-			font-weight: 600;
-			border: 1px solid rgba(12, 142, 111, 0.35);
-			box-shadow: 0 18px 34px rgba(12, 142, 111, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-			backdrop-filter: blur(18px);
-			-webkit-backdrop-filter: blur(18px);
-			transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-		}
+			.button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 12px 22px;
+				border-radius: 999px;
+				background: linear-gradient(
+					180deg,
+					rgba(255, 255, 255, 0.85),
+					rgba(241, 246, 244, 0.75)
+				);
+				color: var(--accent-strong);
+				text-decoration: none;
+				font-weight: 600;
+				border: 1px solid rgba(12, 142, 111, 0.35);
+				box-shadow:
+					0 18px 34px rgba(12, 142, 111, 0.18),
+					inset 0 1px 0 rgba(255, 255, 255, 0.8);
+				backdrop-filter: blur(18px);
+				-webkit-backdrop-filter: blur(18px);
+				transition:
+					transform 0.2s ease,
+					box-shadow 0.2s ease,
+					border-color 0.2s ease;
+			}
 
-		.button:hover {
-			transform: translateY(-1px);
-			border-color: rgba(12, 142, 111, 0.6);
-			box-shadow: 0 22px 42px rgba(12, 142, 111, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-		}
+			.button:hover {
+				transform: translateY(-1px);
+				border-color: rgba(12, 142, 111, 0.6);
+				box-shadow:
+					0 22px 42px rgba(12, 142, 111, 0.25),
+					inset 0 1px 0 rgba(255, 255, 255, 0.9);
+			}
 
 			.card {
 				background: var(--paper-strong);
@@ -168,7 +194,11 @@
 				position: absolute;
 				inset: 16px;
 				border-radius: 18px;
-				background: radial-gradient(circle at top left, var(--accent-glow), transparent 65%);
+				background: radial-gradient(
+					circle at top left,
+					var(--accent-glow),
+					transparent 65%
+				);
 				opacity: 0.8;
 			}
 
@@ -297,23 +327,32 @@
 				<div class="hero-copy">
 					<div class="eyebrow">Menu-bar utility for Codex</div>
 					<h1>
-						Tokage is a lightweight macOS menu-bar app for real-time Codex token usage.
+						Tokage is a lightweight macOS menu-bar app for real-time
+						Codex token usage.
 					</h1>
-				<p>
-					Today, recent days, and month-to-date in one glance. Scans local Codex session logs for clean,
-					ccusage-style totals with one-click refresh.
-				</p>
-				<div class="actions">
-					<a class="button" href="/downloads/Tokage.dmg">Download for macOS</a>
+					<p>
+						Today, recent days, and month-to-date in one glance.
+						Scans local Codex session logs for clean, ccusage-style
+						totals with one-click refresh.
+					</p>
+					<div class="actions">
+						<a class="button" href="/downloads/Tokage.1.1.dmg"
+							>Download for macOS</a
+						>
+					</div>
 				</div>
-			</div>
 
 				<aside class="card">
 					<div class="card-content">
 						<h2>Usage snapshot</h2>
 						<div class="stat-grid">
-							<div class="stat"><span>Today</span><strong>18,420 tokens</strong></div>
-							<div class="stat"><span>Yesterday</span><strong>22,902 tokens</strong></div>
+							<div class="stat">
+								<span>Today</span><strong>18,420 tokens</strong>
+							</div>
+							<div class="stat">
+								<span>Yesterday</span><strong
+									>22,902 tokens</strong>
+							</div>
 							<div class="stat">
 								<span>Month-to-date</span>
 								<strong>214,775 tokens</strong>
@@ -330,13 +369,32 @@
 			<section class="feature-section">
 				<h2>Key features</h2>
 				<ul class="feature-list">
-					<li style="--delay: 0.05s">Menu-bar first: dockless, always-on usage summary</li>
-					<li style="--delay: 0.1s">Daily breakdowns: input, cached, output, and reasoning tokens</li>
-					<li style="--delay: 0.15s">Recent history: yesterday plus five prior days at a glance</li>
-					<li style="--delay: 0.2s">Month-to-date totals: cumulative view for budgeting</li>
-					<li style="--delay: 0.25s">Accurate billing math: aligns with ccusage token normalization</li>
-					<li style="--delay: 0.3s">Efficient scanning: incremental parsing for fast refreshes</li>
-					<li style="--delay: 0.35s">Local-only data: reads ~/.codex/sessions and stays on your Mac</li>
+					<li style="--delay: 0.05s">
+						Menu-bar first: dockless, always-on usage summary
+					</li>
+					<li style="--delay: 0.1s">
+						Daily breakdowns: input, cached, output, and reasoning
+						tokens
+					</li>
+					<li style="--delay: 0.15s">
+						Recent history: yesterday plus five prior days at a
+						glance
+					</li>
+					<li style="--delay: 0.2s">
+						Month-to-date totals: cumulative view for budgeting
+					</li>
+					<li style="--delay: 0.25s">
+						Accurate billing math: aligns with ccusage token
+						normalization
+					</li>
+					<li style="--delay: 0.3s">
+						Efficient scanning: incremental parsing for fast
+						refreshes
+					</li>
+					<li style="--delay: 0.35s">
+						Local-only data: reads ~/.codex/sessions and stays on
+						your Mac
+					</li>
 				</ul>
 			</section>
 		</main>
