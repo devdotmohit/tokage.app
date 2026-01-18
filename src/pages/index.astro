@@ -1,89 +1,126 @@
 ---
 import "../styles/global.css";
-const year = new Date().getFullYear();
 ---
 
-<html lang="en">
+<html lang="en" class="bg-[#050505]">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Tokage | Codex Usage Tracker for macOS</title>
-		<meta
-			name="description"
-			content="Tokage is a lightweight macOS menu-bar app that tracks your Codex token usage in real time without leaving your machine."
-		/>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;600&display=swap"
-		/>
-	</head>
-	<body
-		class="min-h-screen font-['Space_Grotesk'] text-[#0d141b] [color-scheme:light] bg-[radial-gradient(circle_at_12%_18%,rgba(9,125,97,0.2),transparent_52%),radial-gradient(circle_at_86%_22%,rgba(224,142,46,0.18),transparent_48%),linear-gradient(120deg,#f4ede1_0%,#f0f7f5_52%,#fbf8f1_100%)] bg-fixed"
-	>
-		<header
-			class="mx-auto flex max-w-[1180px] flex-col items-start gap-3 px-[6vw] pt-6 md:flex-row md:items-center md:justify-between"
-		>
-			<div class="text-[0.9rem] font-semibold uppercase tracking-[0.04em]">
-				Tokage
-			</div>
-			<div
-				class="inline-flex items-center gap-2.5 rounded-full bg-[rgba(13,20,27,0.05)] px-3.5 py-2 text-[0.85rem] text-[#6a747f]"
-			>
-				<span
-					class="inline-flex h-[9px] w-[9px] items-center justify-center rounded-full bg-[#0c8e6f] shadow-[0_0_0_5px_rgba(12,142,111,0.12)]"
-				></span>
-				Local-only token tracker
-			</div>
-		</header>
+		<title>Tokage</title>
+		<style>
+			/* Premium Animations */
+			@keyframes tilt {
+				0%,
+				100% {
+					transform: rotate(-3deg);
+				}
+				50% {
+					transform: rotate(3deg);
+				}
+			}
+			@keyframes float {
+				0%,
+				100% {
+					transform: translateY(0px);
+				}
+				50% {
+					transform: translateY(-5px);
+				}
+			}
+			@keyframes grow-bar {
+				0%,
+				100% {
+					transform: scaleY(0.4);
+					opacity: 0.5;
+				}
+				50% {
+					transform: scaleY(1);
+					opacity: 1;
+				}
+			}
+			@keyframes spin-slow {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
 
-		<main
-			class="mx-auto grid max-w-[1180px] gap-16 px-[6vw] pt-8 pb-20 md:pt-12 md:pb-24"
-		>
-			<section
-				class="grid items-center gap-12 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]"
-			>
-				<div
-					class="grid gap-5 animate-[rise_0.8s_ease_both] motion-reduce:animate-none"
-				>
-					<div class="text-[0.75rem] uppercase tracking-[0.16em] text-[#6a747f]">
+			.animate-tilt {
+				animation: tilt 5s ease-in-out infinite;
+				transform-origin: center;
+			}
+			.animate-float {
+				animation: float 6s ease-in-out infinite;
+			}
+			.animate-grow-1 {
+				animation: grow-bar 2s ease-in-out infinite;
+				transform-origin: bottom;
+			}
+			.animate-grow-2 {
+				animation: grow-bar 2s ease-in-out infinite;
+				animation-delay: 0.3s;
+				transform-origin: bottom;
+			}
+			.animate-grow-3 {
+				animation: grow-bar 2s ease-in-out infinite;
+				animation-delay: 0.6s;
+				transform-origin: bottom;
+			}
+			.animate-spin-slow {
+				animation: spin-slow 10s linear infinite;
+			}
+		</style>
+	</head>
+	<body class="bg-[#050505] text-white font-sans antialiased selection:bg-[#10b981] selection:text-black">
+		<div class="bg-[#050505] min-h-screen flex flex-col max-w-6xl mx-auto px-6 relative">
+			<header class="flex-none flex justify-center items-center py-8 z-20">
+				<div class="flex items-center gap-2 font-bold text-xl tracking-tight hover:opacity-80 transition-opacity cursor-default">
+					<svg
+						class="w-6 h-6 text-[#10b981]"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="M12 2a10 10 0 1 0 10 10 4 10 0 0 1-5-5 4 10 0 0 1-5-5" />
+					</svg>
+					Tokage
+				</div>
+			</header>
+
+			<main class="flex-1 flex flex-col justify-center items-center text-center relative pb-10">
+				<div class="z-10 flex flex-col items-center">
+					<div class="mb-8 inline-flex items-center px-4 py-2 border border-[#222] bg-[#111] text-xs font-medium text-gray-400 uppercase tracking-wider">
 						Menu-bar utility for Codex
 					</div>
-					<h1
-						class="m-0 font-['Fraunces'] text-[clamp(2.4rem,4vw,4rem)] leading-[1.05]"
-					>
-						Tokage is a lightweight macOS menu-bar app for real-time
-						Codex token usage.
+					<h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 leading-[1.1]">
+						Local-only token tracker
 					</h1>
-					<p class="m-0 text-[1.05rem] leading-[1.7] text-[#3b4551]">
-						Today, recent days, and month-to-date in one glance. Scans local
-						Codex session logs for clean, ccusage-style totals with one-click
-						refresh.
+					<p class="text-lg md:text-xl text-gray-400 max-w-2xl mb-12 leading-relaxed">
+						A lightweight macOS menu-bar app for real-time Codex token usage.<br class="hidden md:block" />
+						Scans local session logs for clean totals with one-click refresh.
 					</p>
-					<div class="flex flex-wrap items-center gap-3.5">
+					<div class="flex flex-col sm:flex-row gap-4 items-center mb-16">
 						<a
-							class="inline-flex items-center justify-center rounded-full border border-[rgba(12,142,111,0.35)] bg-[linear-gradient(180deg,rgba(255,255,255,0.85),rgba(241,246,244,0.75))] px-[22px] py-3 font-semibold text-[#075d4a] shadow-[0_18px_34px_rgba(12,142,111,0.18),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-[18px] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(12,142,111,0.6)] hover:shadow-[0_22px_42px_rgba(12,142,111,0.25),inset_0_1px_0_rgba(255,255,255,0.9)]"
 							href="/downloads/Tokage.1.1.dmg"
+							class="bg-white text-black px-8 py-3 font-bold hover:bg-[#10b981] hover:text-black transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
 						>
 							Download for macOS
 						</a>
 						<a
-							class="inline-flex items-center gap-2 rounded-full border border-[rgba(12,142,111,0.45)] bg-white/70 px-5 py-2.5 text-[0.95rem] font-semibold text-[#075d4a] shadow-[0_10px_26px_rgba(12,142,111,0.16)] backdrop-blur-[12px] transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(12,142,111,0.7)] hover:shadow-[0_16px_36px_rgba(12,142,111,0.22)]"
 							href="https://github.com/devdotmohit/tokage-app"
 							target="_blank"
+							class="px-8 py-3 font-semibold text-gray-400 border border-[#333] hover:border-white hover:text-white transition-all duration-200 flex items-center gap-2 bg-[#111]"
 							rel="noreferrer"
 						>
-							<svg
-								class="h-4 w-4"
-								viewBox="0 0 24 24"
-								aria-hidden="true"
-								fill="currentColor"
-							>
+							<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
 								<path
-									d="M12 2C6.48 2 2 6.58 2 12.26c0 4.54 2.87 8.38 6.84 9.74.5.1.68-.22.68-.48 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.38-3.37-1.38-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.08 1.53 1.08.9 1.6 2.36 1.14 2.94.87.09-.67.35-1.14.63-1.4-2.22-.26-4.56-1.15-4.56-5.13 0-1.14.39-2.07 1.03-2.8-.1-.26-.45-1.32.1-2.76 0 0 .84-.28 2.75 1.07.8-.23 1.65-.34 2.5-.34.85 0 1.7.12 2.5.34 1.91-1.35 2.75-1.07 2.75-1.07.55 1.44.2 2.5.1 2.76.64.73 1.03 1.66 1.03 2.8 0 3.99-2.34 4.87-4.57 5.12.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.84 0 .26.18.58.69.48 3.97-1.36 6.84-5.2 6.84-9.74C22 6.58 17.52 2 12 2z"
+									d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
 								/>
 							</svg>
 							View on GitHub
@@ -91,96 +128,182 @@ const year = new Date().getFullYear();
 					</div>
 				</div>
 
-				<aside
-					class="relative overflow-hidden rounded-[22px] border border-[rgba(13,20,27,0.08)] bg-[#fbf8f1] p-7 shadow-[0_22px_60px_rgba(13,20,27,0.18)] animate-[rise_0.8s_ease_both] [animation-delay:0.1s] motion-reduce:animate-none before:pointer-events-none before:absolute before:inset-4 before:rounded-[18px] before:bg-[radial-gradient(circle_at_top_left,rgba(17,141,111,0.18),transparent_65%)] before:opacity-80 before:content-['']"
-				>
-					<div class="relative z-10 grid gap-5">
-						<h2 class="m-0 text-[1.2rem]">Usage snapshot</h2>
-						<div class="grid gap-3.5">
-							<div
-								class="flex items-center justify-between rounded-[14px] bg-[rgba(13,20,27,0.04)] px-3.5 py-3 text-[0.95rem]"
-							>
-								<span>Today</span><strong class="font-semibold text-[#075d4a]">18,420 tokens</strong>
+				<div class="relative w-full flex flex-col items-center group z-10">
+					<div class="absolute -inset-1 bg-gradient-to-r from-[#10b981] to-blue-600 blur-xl opacity-10 group-hover:opacity-20 transition duration-1000 max-w-sm mx-auto"></div>
+					<div class="w-80 bg-[#111]/90 backdrop-blur-xl border border-[#333] p-5 shadow-2xl text-left relative z-10 transform hover:scale-[1.02] transition-transform duration-500">
+						<div class="flex justify-between items-center mb-4">
+							<span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Usage snapshot</span>
+							<div class="h-1.5 w-1.5 rounded-full bg-[#10b981] animate-pulse"></div>
+						</div>
+						<div class="space-y-3">
+							<div class="flex justify-between items-baseline border-b border-white/5 pb-2">
+								<span class="text-gray-400 text-sm">Today</span>
+								<span class="text-white font-mono font-medium">18,420</span>
 							</div>
-							<div
-								class="flex items-center justify-between rounded-[14px] bg-[rgba(13,20,27,0.04)] px-3.5 py-3 text-[0.95rem]"
-							>
-								<span>Yesterday</span
-								><strong class="font-semibold text-[#075d4a]">22,902 tokens</strong>
+							<div class="flex justify-between items-baseline border-b border-white/5 pb-2">
+								<span class="text-gray-400 text-sm">Yesterday</span>
+								<span class="text-white font-mono font-medium">22,902</span>
 							</div>
-							<div
-								class="flex items-center justify-between rounded-[14px] bg-[rgba(13,20,27,0.04)] px-3.5 py-3 text-[0.95rem]"
-							>
-								<span>Month-to-date</span>
-								<strong class="font-semibold text-[#075d4a]">214,775 tokens</strong>
+							<div class="flex justify-between items-baseline">
+								<span class="text-gray-400 text-sm">Month-to-date</span>
+								<span class="text-[#10b981] font-mono font-bold">214,775</span>
 							</div>
 						</div>
-						<div
-							class="flex items-center justify-between rounded-[14px] bg-[rgba(13,20,27,0.04)] px-3.5 py-3 text-[0.95rem]"
-						>
-							<span>Last refresh</span>
-							<small class="text-[#6a747f]">Just now from ~/.codex/sessions</small>
+						<div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-xs text-gray-500">
+							<span>Last refresh Just now</span>
+							<span class="font-mono text-[10px] opacity-60">~/.codex/sessions</span>
 						</div>
 					</div>
-				</aside>
-			</section>
+				</div>
+			</main>
+		</div>
 
-			<section class="grid gap-[18px]">
-				<h2 class="m-0 text-[1.2rem] tracking-[0.02em]">Key features</h2>
-				<ul class="m-0 grid list-none gap-3.5 p-0">
-					<li
-						class="relative pl-7 leading-[1.6] text-[#3b4551] animate-[rise_0.65s_ease_both] [animation-delay:0.05s] motion-reduce:animate-none before:absolute before:left-0 before:top-[0.35em] before:h-3 before:w-3 before:rounded-full before:bg-[linear-gradient(140deg,#0c8e6f,#f0b165)] before:shadow-[0_0_0_6px_rgba(12,142,111,0.12)] before:content-['']"
-					>
-						Menu-bar first: dockless, always-on usage summary
-					</li>
-					<li
-						class="relative pl-7 leading-[1.6] text-[#3b4551] animate-[rise_0.65s_ease_both] [animation-delay:0.1s] motion-reduce:animate-none before:absolute before:left-0 before:top-[0.35em] before:h-3 before:w-3 before:rounded-full before:bg-[linear-gradient(140deg,#0c8e6f,#f0b165)] before:shadow-[0_0_0_6px_rgba(12,142,111,0.12)] before:content-['']"
-					>
-						Daily breakdowns: input, cached, output, and reasoning tokens
-					</li>
-					<li
-						class="relative pl-7 leading-[1.6] text-[#3b4551] animate-[rise_0.65s_ease_both] [animation-delay:0.15s] motion-reduce:animate-none before:absolute before:left-0 before:top-[0.35em] before:h-3 before:w-3 before:rounded-full before:bg-[linear-gradient(140deg,#0c8e6f,#f0b165)] before:shadow-[0_0_0_6px_rgba(12,142,111,0.12)] before:content-['']"
-					>
-						Recent history: yesterday plus five prior days at a glance
-					</li>
-					<li
-						class="relative pl-7 leading-[1.6] text-[#3b4551] animate-[rise_0.65s_ease_both] [animation-delay:0.2s] motion-reduce:animate-none before:absolute before:left-0 before:top-[0.35em] before:h-3 before:w-3 before:rounded-full before:bg-[linear-gradient(140deg,#0c8e6f,#f0b165)] before:shadow-[0_0_0_6px_rgba(12,142,111,0.12)] before:content-['']"
-					>
-						Month-to-date totals: cumulative view for budgeting
-					</li>
-					<li
-						class="relative pl-7 leading-[1.6] text-[#3b4551] animate-[rise_0.65s_ease_both] [animation-delay:0.25s] motion-reduce:animate-none before:absolute before:left-0 before:top-[0.35em] before:h-3 before:w-3 before:rounded-full before:bg-[linear-gradient(140deg,#0c8e6f,#f0b165)] before:shadow-[0_0_0_6px_rgba(12,142,111,0.12)] before:content-['']"
-					>
-						Accurate billing math: aligns with ccusage token normalization
-					</li>
-					<li
-						class="relative pl-7 leading-[1.6] text-[#3b4551] animate-[rise_0.65s_ease_both] [animation-delay:0.3s] motion-reduce:animate-none before:absolute before:left-0 before:top-[0.35em] before:h-3 before:w-3 before:rounded-full before:bg-[linear-gradient(140deg,#0c8e6f,#f0b165)] before:shadow-[0_0_0_6px_rgba(12,142,111,0.12)] before:content-['']"
-					>
-						Efficient scanning: incremental parsing for fast refreshes
-					</li>
-					<li
-						class="relative pl-7 leading-[1.6] text-[#3b4551] animate-[rise_0.65s_ease_both] [animation-delay:0.35s] motion-reduce:animate-none before:absolute before:left-0 before:top-[0.35em] before:h-3 before:w-3 before:rounded-full before:bg-[linear-gradient(140deg,#0c8e6f,#f0b165)] before:shadow-[0_0_0_6px_rgba(12,142,111,0.12)] before:content-['']"
-					>
-						Local-only data: reads ~/.codex/sessions and stays on your Mac
-					</li>
-				</ul>
-			</section>
-		</main>
-		<footer
-			class="mx-auto w-full max-w-[1180px] px-[6vw] pb-10 pt-2 text-[0.85rem] text-[#6a747f]"
-		>
-			<div class="flex flex-wrap items-center gap-2">
-				<span>Copyright {year} Tokage</span>
-				<span class="text-[#b0b7be]">-</span>
-				<a
-					class="font-semibold text-[#075d4a] transition-colors hover:text-[#0d141b]"
-					href="https://x.com/mohitdotdev"
-					target="_blank"
-					rel="noreferrer"
-				>
-					X @mohitdotdev
-				</a>
+		<section class="min-h-screen flex flex-col justify-center bg-[#050505] border-t border-[#1c1c1c] relative overflow-hidden py-10">
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#10b981] blur-[150px] opacity-5 pointer-events-none"></div>
+
+			<div class="max-w-[1400px] w-full mx-auto px-6 relative z-10 flex-1 flex flex-col justify-center">
+				<div class="text-center mb-10">
+					<h2 class="text-3xl md:text-4xl font-bold mb-3">Features</h2>
+					<p class="text-gray-500">Everything you need to track usage, nothing you don't.</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+					<div class="group bg-[#0a0a0a] border border-[#222] p-6 hover:border-[#10b981]/50 transition-colors flex flex-col h-64 relative overflow-hidden">
+						<div class="flex-1 flex items-center justify-center text-[#10b981]">
+							<svg class="w-24 h-24 transform group-hover:scale-110 transition-transform duration-500" viewBox="0 0 100 60" fill="none">
+								<rect x="5" y="15" width="90" height="30" fill="#1c1c1c" stroke="currentColor" stroke-width="1.5" />
+								<rect x="82" y="27" width="6" height="6" fill="currentColor" class="animate-pulse" />
+								<rect x="70" y="27" width="6" height="6" fill="#333" />
+								<rect x="60" y="27" width="6" height="6" fill="#333" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-bold text-white text-lg mb-1">Menu-bar first</h3>
+							<p class="text-sm text-gray-500 leading-tight">Dockless, always-on usage summary.</p>
+						</div>
+					</div>
+
+					<div class="group bg-[#0a0a0a] border border-[#222] p-6 hover:border-[#10b981]/50 transition-colors flex flex-col h-64 relative overflow-hidden">
+						<div class="flex-1 flex items-center justify-center gap-2 text-[#10b981] pt-4">
+							<div class="w-5 bg-current h-12 opacity-40 animate-grow-1"></div>
+							<div class="w-5 bg-current h-16 opacity-60 animate-grow-2"></div>
+							<div class="w-5 bg-current h-8 opacity-30 animate-grow-3"></div>
+							<div class="w-5 bg-current h-14 opacity-80 animate-grow-1"></div>
+						</div>
+						<div>
+							<h3 class="font-bold text-white text-lg mb-1">Daily breakdowns</h3>
+							<p class="text-sm text-gray-500 leading-tight">Input, cached, output, and reasoning tokens.</p>
+						</div>
+					</div>
+
+					<div class="group bg-[#0a0a0a] border border-[#222] p-6 hover:border-[#10b981]/50 transition-colors flex flex-col h-64 relative overflow-hidden">
+						<div class="flex-1 flex items-center justify-center text-[#10b981]">
+							<svg class="w-32 h-32 transform group-hover:scale-110 transition-transform duration-500" viewBox="0 0 100 60" fill="none">
+								<line x1="10" y1="35" x2="90" y2="35" stroke="#333" />
+								<rect x="25" y="30" width="10" height="10" fill="#222" class="animate-float" />
+								<rect x="45" y="30" width="10" height="10" fill="#222" class="animate-float" style="animation-delay: 0.2s" />
+								<rect x="65" y="27" width="16" height="16" fill="currentColor" class="animate-float" style="animation-delay: 0.4s" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-bold text-white text-lg mb-1">Recent history</h3>
+							<p class="text-sm text-gray-500 leading-tight">Yesterday + five prior days at a glance.</p>
+						</div>
+					</div>
+
+					<div class="group bg-[#0a0a0a] border border-[#222] p-6 hover:border-[#10b981]/50 transition-colors flex flex-col h-64 relative overflow-hidden">
+						<div class="flex-1 flex items-center justify-center text-[#10b981]">
+							<svg class="w-24 h-24 transform group-hover:scale-110 transition-transform duration-500" viewBox="0 0 100 60" fill="none">
+								<defs>
+									<linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+										<stop offset="0%" stop-color="#10b981" stop-opacity="0.4" />
+										<stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+									</linearGradient>
+								</defs>
+								<path d="M10 50L30 35L50 40L70 15L90 20" stroke="currentColor" stroke-width="2" />
+								<path d="M10 50L30 35L50 40L70 15L90 20V55H10V50Z" fill="url(#grad1)" />
+								<rect x="87" y="17" width="6" height="6" fill="currentColor" class="animate-pulse" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-bold text-white text-lg mb-1">Month-to-date</h3>
+							<p class="text-sm text-gray-500 leading-tight">Cumulative view for budgeting.</p>
+						</div>
+					</div>
+
+					<div class="group bg-[#0a0a0a] border border-[#222] p-6 hover:border-[#10b981]/50 transition-colors flex flex-col h-64 relative overflow-hidden">
+						<div class="flex-1 flex items-center justify-center text-[#10b981]">
+							<svg class="w-24 h-24 transform group-hover:scale-110 transition-transform duration-500" viewBox="0 0 100 60" fill="none">
+								<path d="M50 10L50 50" stroke="#333" stroke-width="2" />
+								<path d="M35 50H65" stroke="#333" stroke-width="2" />
+								<g class="animate-tilt">
+									<line x1="20" y1="25" x2="80" y2="25" stroke="currentColor" stroke-width="2" />
+									<rect x="20" y="25" width="12" height="12" fill="#1c1c1c" stroke="currentColor" />
+									<rect x="68" y="25" width="12" height="12" fill="currentColor" />
+								</g>
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-bold text-white text-lg mb-1">Billing math</h3>
+							<p class="text-sm text-gray-500 leading-tight">Aligns with ccusage normalization.</p>
+						</div>
+					</div>
+
+					<div class="group bg-[#0a0a0a] border border-[#222] p-6 hover:border-[#10b981]/50 transition-colors flex flex-col h-64 relative overflow-hidden">
+						<div class="flex-1 flex items-center justify-center text-[#10b981]">
+							<svg class="w-24 h-24" viewBox="0 0 100 100" fill="none">
+								<circle cx="50" cy="50" r="25" stroke="currentColor" stroke-width="1" opacity="0.3" />
+								<circle cx="50" cy="50" r="15" stroke="currentColor" stroke-width="1" opacity="0.5" />
+								<path d="M50 50L50 20" stroke="currentColor" stroke-width="2" class="origin-center animate-spin-slow" />
+								<rect x="63" y="33" width="4" height="4" fill="currentColor" class="animate-pulse" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-bold text-white text-lg mb-1">Efficient scanning</h3>
+							<p class="text-sm text-gray-500 leading-tight">Incremental parsing for fast refreshes.</p>
+						</div>
+					</div>
+
+					<div class="group lg:col-span-2 bg-gradient-to-r from-[#0a0a0a] to-[#111] border border-[#222] p-6 hover:border-[#10b981]/50 transition-colors flex flex-col md:flex-row items-center gap-6 md:gap-8 h-auto md:h-64 relative overflow-hidden">
+						<div class="absolute inset-0 bg-[radial-gradient(circle_at_0%_50%,rgba(16,185,129,0.1),transparent_70%)]"></div>
+
+						<div class="flex-none text-[#10b981] pl-0 md:pl-4">
+							<svg class="w-32 h-32 transform group-hover:scale-105 transition-transform duration-500" viewBox="0 0 100 100" fill="none">
+								<path d="M50 15L25 25V50C25 70 50 85 50 85C50 85 75 70 75 50V25L50 15Z" fill="#1c1c1c" stroke="currentColor" stroke-width="1.5" />
+								<path d="M50 45V55" stroke="currentColor" stroke-width="3" />
+								<rect x="46" y="34" width="8" height="8" fill="currentColor" />
+								<path
+									d="M50 10L15 22V50C15 75 50 90 50 90C50 90 85 75 85 50V22L50 10Z"
+									stroke="currentColor"
+									stroke-width="1"
+									opacity="0.3"
+									class="animate-pulse"
+								/>
+							</svg>
+						</div>
+						<div class="relative z-10 pr-0 md:pr-4 text-center md:text-left">
+							<h3 class="text-2xl font-bold text-white mb-2">Local-only data</h3>
+							<p class="text-sm text-gray-400 leading-relaxed mb-4">
+								Reads <code class="bg-[#222] px-1 text-[#10b981] font-mono">~/.codex/sessions</code> directly. No data ever leaves your Mac.
+							</p>
+							<div class="inline-flex items-center gap-2 border border-[#10b981]/30 bg-[#10b981]/10 px-3 py-1 text-xs font-bold text-[#10b981] uppercase tracking-wider">
+								<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+									<path stroke-linecap="square" stroke-linejoin="miter" d="M5 13l4 4L19 7" />
+								</svg>
+								100% Private
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer class="mt-8 pt-8 text-center text-gray-500 text-sm border-t border-[#1c1c1c]">
+					&copy; <span id="year"></span> Tokage -
+					<a href="https://x.com/mohitdotdev" target="_blank" class="hover:text-white hover:underline transition-colors" rel="noreferrer">𝕏 @mohitdotdev</a>
+				</footer>
+
+				<script>
+					document.getElementById("year").textContent = new Date().getFullYear();
+				</script>
 			</div>
-		</footer>
+		</section>
 	</body>
 </html>
