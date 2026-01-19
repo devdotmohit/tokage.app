@@ -4,112 +4,133 @@ const year = new Date().getFullYear();
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Tokage Downloads</title>
-    <meta
-      name="description"
-      content="Download the latest Tokage macOS build and see version details."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;600&display=swap"
-    />
-  </head>
-  <body
-    class="min-h-screen font-['Space_Grotesk'] text-[#0d141b] [color-scheme:light] bg-[radial-gradient(circle_at_12%_18%,rgba(9,125,97,0.2),transparent_52%),radial-gradient(circle_at_86%_22%,rgba(224,142,46,0.18),transparent_48%),linear-gradient(120deg,#f4ede1_0%,#f0f7f5_52%,#fbf8f1_100%)] bg-fixed"
-  >
-    <header
-      class="mx-auto flex max-w-[1180px] flex-col items-start gap-3 px-[6vw] pt-6 md:flex-row md:items-center md:justify-between"
-    >
-      <div class="text-[0.9rem] font-semibold uppercase tracking-[0.04em]">
-        Tokage
-      </div>
-      <nav class="flex gap-[18px] text-[0.9rem]">
-        <a class="text-[#6a747f] transition-colors hover:text-[#0d141b]" href="/">
-          Overview
-        </a>
-        <a
-          class="text-[#6a747f] transition-colors hover:text-[#0d141b]"
-          href="/release-notes/1.0"
-        >
-          Release notes
-        </a>
-        <a
-          class="text-[#6a747f] transition-colors hover:text-[#0d141b]"
-          href="/appcast.xml"
-        >
-          Appcast
-        </a>
-      </nav>
-    </header>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Tokage Downloads</title>
+		<meta
+			name="description"
+			content="Download the latest Tokage macOS build and see version details."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;600&display=swap"
+		/>
+	</head>
+	<body
+		class="min-h-screen font-['Space_Grotesk'] text-[#0d141b] [color-scheme:light] bg-[radial-gradient(circle_at_12%_18%,rgba(9,125,97,0.2),transparent_52%),radial-gradient(circle_at_86%_22%,rgba(224,142,46,0.18),transparent_48%),linear-gradient(120deg,#f4ede1_0%,#f0f7f5_52%,#fbf8f1_100%)] bg-fixed"
+	>
+		<header
+			class="mx-auto flex max-w-[1180px] flex-col items-start gap-3 px-[6vw] pt-6 md:flex-row md:items-center md:justify-between"
+		>
+			<div
+				class="text-[0.9rem] font-semibold uppercase tracking-[0.04em]"
+			>
+				Tokage
+			</div>
+			<nav class="flex gap-[18px] text-[0.9rem]">
+				<a
+					class="text-[#6a747f] transition-colors hover:text-[#0d141b]"
+					href="/"
+				>
+					Overview
+				</a>
+				<a
+					class="text-[#6a747f] transition-colors hover:text-[#0d141b]"
+					href="/release-notes/1.0"
+				>
+					Release notes
+				</a>
+				<a
+					class="text-[#6a747f] transition-colors hover:text-[#0d141b]"
+					href="/appcast.xml"
+				>
+					Appcast
+				</a>
+			</nav>
+		</header>
 
-    <main class="mx-auto grid max-w-[980px] gap-12 px-[6vw] pt-12 pb-24">
-      <section class="grid gap-[18px]">
-        <div class="text-[0.75rem] uppercase tracking-[0.16em] text-[#6a747f]">
-          macOS download
-        </div>
-        <h1
-          class="m-0 font-['Fraunces'] text-[clamp(2.1rem,4vw,3.4rem)] leading-[1.05]"
-        >
-          Download Tokage for your menu bar.
-        </h1>
-        <p class="m-0 leading-[1.7] text-[#3b4551]">
-          The latest public build includes real-time token usage summaries, daily breakdowns,
-          and local-only log parsing for Codex usage tracking.
-        </p>
-      </section>
+		<main class="mx-auto grid max-w-[980px] gap-12 px-[6vw] pt-12 pb-24">
+			<section class="grid gap-[18px]">
+				<div
+					class="text-[0.75rem] uppercase tracking-[0.16em] text-[#6a747f]"
+				>
+					macOS download
+				</div>
+				<h1
+					class="m-0 font-['Fraunces'] text-[clamp(2.1rem,4vw,3.4rem)] leading-[1.05]"
+				>
+					Download Tokage for your menu bar.
+				</h1>
+				<p class="m-0 leading-[1.7] text-[#3b4551]">
+					The latest public build includes real-time token usage
+					summaries, daily breakdowns, and local-only log parsing for
+					Codex usage tracking.
+				</p>
+			</section>
 
-      <section
-        class="relative overflow-hidden rounded-[22px] border border-[rgba(13,20,27,0.08)] bg-[#fbf8f1] p-7 shadow-[0_22px_60px_rgba(13,20,27,0.18)] before:pointer-events-none before:absolute before:inset-4 before:rounded-[18px] before:bg-[radial-gradient(circle_at_top_left,rgba(17,141,111,0.18),transparent_65%)] before:opacity-80 before:content-['']"
-      >
-        <div class="relative z-10 grid gap-[18px]">
-          <h2 class="m-0 text-[1.2rem]">Tokage 1.0</h2>
-          <div class="grid gap-2.5 text-[0.95rem] text-[#3b4551]">
-            <div>Version: <strong class="font-semibold text-[#075d4a]">1.0</strong></div>
-            <div>Format: <strong class="font-semibold text-[#075d4a]">macOS DMG</strong></div>
-            <div>Size: <strong class="font-semibold text-[#075d4a]">3.1 MB</strong></div>
-          </div>
-          <div class="flex flex-wrap items-center gap-3.5">
-            <a
-              class="inline-flex items-center justify-center rounded-full bg-[#0c8e6f] px-5 py-3 font-semibold text-white shadow-[0_16px_40px_rgba(12,142,111,0.3)] transition-colors hover:bg-[#075d4a]"
-              href="/downloads/Tokage.dmg"
-            >
-              Download DMG
-            </a>
-            <a
-              class="text-[0.95rem] text-[#6a747f] transition-colors hover:text-[#0d141b]"
-              href="/release-notes/1.0"
-            >
-              Read release notes
-            </a>
-          </div>
-          <div class="text-[0.9rem] text-[#6a747f]">
-            You can replace the DMG at `/downloads/Tokage.dmg` when a new build is ready.
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer
-      class="mx-auto w-full max-w-[1180px] px-[6vw] pb-10 pt-2 text-[0.85rem] text-[#6a747f]"
-    >
-      <div class="flex flex-wrap items-center gap-2">
-        <span>Copyright {year} Tokage</span>
-        <span class="text-[#b0b7be]">-</span>
-        <a
-          class="font-semibold text-[#075d4a] transition-colors hover:text-[#0d141b]"
-          href="https://x.com/mohitdotdev"
-          target="_blank"
-          rel="noreferrer"
-        >
-          X @mohitdotdev
-        </a>
-      </div>
-    </footer>
-  </body>
+			<section
+				class="relative overflow-hidden rounded-[22px] border border-[rgba(13,20,27,0.08)] bg-[#fbf8f1] p-7 shadow-[0_22px_60px_rgba(13,20,27,0.18)] before:pointer-events-none before:absolute before:inset-4 before:rounded-[18px] before:bg-[radial-gradient(circle_at_top_left,rgba(17,141,111,0.18),transparent_65%)] before:opacity-80 before:content-['']"
+			>
+				<div class="relative z-10 grid gap-[18px]">
+					<h2 class="m-0 text-[1.2rem]">Tokage 1.0</h2>
+					<div class="grid gap-2.5 text-[0.95rem] text-[#3b4551]">
+						<div>
+							Version: <strong
+								class="font-semibold text-[#075d4a]">1.2</strong
+							>
+						</div>
+						<div>
+							Format: <strong class="font-semibold text-[#075d4a]"
+								>macOS DMG</strong
+							>
+						</div>
+						<div>
+							Size: <strong class="font-semibold text-[#075d4a]"
+								>3.1 MB</strong
+							>
+						</div>
+					</div>
+					<div class="flex flex-wrap items-center gap-3.5">
+						<a
+							class="inline-flex items-center justify-center rounded-full bg-[#0c8e6f] px-5 py-3 font-semibold text-white shadow-[0_16px_40px_rgba(12,142,111,0.3)] transition-colors hover:bg-[#075d4a]"
+							href="/downloads/Tokage.dmg"
+						>
+							Download DMG
+						</a>
+						<a
+							class="text-[0.95rem] text-[#6a747f] transition-colors hover:text-[#0d141b]"
+							href="/release-notes/1.0"
+						>
+							Read release notes
+						</a>
+					</div>
+					<div class="text-[0.9rem] text-[#6a747f]">
+						You can replace the DMG at `/downloads/Tokage.dmg` when
+						a new build is ready.
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer
+			class="mx-auto w-full max-w-[1180px] px-[6vw] pb-10 pt-2 text-[0.85rem] text-[#6a747f]"
+		>
+			<div class="flex flex-wrap items-center gap-2">
+				<span>Copyright {year} Tokage</span>
+				<span class="text-[#b0b7be]">-</span>
+				<a
+					class="font-semibold text-[#075d4a] transition-colors hover:text-[#0d141b]"
+					href="https://x.com/mohitdotdev"
+					target="_blank"
+					rel="noreferrer"
+				>
+					X @mohitdotdev
+				</a>
+			</div>
+		</footer>
+	</body>
 </html>
