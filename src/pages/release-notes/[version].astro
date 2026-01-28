@@ -4,28 +4,50 @@ import { getCollection } from "astro:content";
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const entries = await getCollection("release-notes");
-  return entries.map((entry) => ({
-    params: { version: entry.slug },
-    props: { entry },
-  }));
+	const entries = await getCollection("release-notes");
+	return entries.map((entry) => ({
+		params: { version: entry.slug },
+		props: { entry },
+	}));
 }
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const pageTitle = `${entry.data.title} Release Notes`;
+const pageDescription = `Release notes for ${entry.data.title}.`;
+const pageUrl = `https://tokage.app/release-notes/${entry.slug}`;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{entry.data.title} Release Notes</title>
-  </head>
-  <body>
-    <main>
-      <h1>{entry.data.title} Release Notes</h1>
-      <Content />
-    </main>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={pageUrl} />
+		<meta
+			property="og:image"
+			content="https://ogmi.dev/asset/01KFD4DMRTAHBJQG8FKAX83Q4K"
+		/>
+		<meta property="og:site_name" content="Tokage" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
+		<meta
+			name="twitter:image"
+			content="https://ogmi.dev/asset/01KFD4DMRTAHBJQG8FKAX83Q4K"
+		/>
+		<meta name="twitter:creator" content="@mohitdotdev" />
+		<meta name="twitter:site" content="@mohitdotdev" />
+	</head>
+	<body>
+		<main>
+			<h1>{entry.data.title} Release Notes</h1>
+			<Content />
+		</main>
+	</body>
 </html>
