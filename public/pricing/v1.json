@@ -1,0 +1,410 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-29.1",
+  "published_at": "2026-10-29T08:35:50Z",
+  "verified_at": "2026-10-29T08:35:50Z",
+  "pricing_basis": "current_api_list_prices",
+  "currency": "USD",
+  "unit_tokens": 1000000,
+  "long_context_above_input_tokens": 272000,
+  "service_tier_aliases": {
+    "default": "standard",
+    "priority": "fast"
+  },
+  "unknown_model_policy": "unavailable",
+  "unknown_service_tier_policy": "unavailable",
+  "sources": [
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/docs/pricing.md"
+  ],
+  "notes": [
+    "Rates apply to the full request; choose context bracket using total input tokens including cached input.",
+    "Input and cached input rates are separate: subtract cache reads and separately billed cache writes before pricing uncached input. Reasoning is included in output.",
+    "Missing or auto service tier requires an explicit estimate assumption; it is not proof of Standard billing.",
+    "This is a current API list-price snapshot, not historical effective-date data or a subscription invoice. Tool charges, regional/FedRAMP uplifts and taxes are excluded."
+  ],
+  "models": {
+    "gpt-6-astra": {
+      "display_name": "GPT-6 Astra",
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "service_tiers": {
+        "standard": {
+          "short_context": {
+            "input": 10.0,
+            "output": 50.0,
+            "cached_input": 1.0,
+            "cache_write_30m": 12.5,
+            "cache_write_12h": 25.0
+          },
+          "long_context": {
+            "input": 20.0,
+            "output": 75.0,
+            "cached_input": 2.0,
+            "cache_write_30m": 25.0,
+            "cache_write_12h": 50.0
+          }
+        },
+        "batch": {
+          "short_context": {
+            "input": 5.0,
+            "output": 25.0,
+            "cached_input": 0.5,
+            "cache_write_30m": 6.25,
+            "cache_write_12h": 12.5
+          },
+          "long_context": {
+            "input": 10.0,
+            "output": 37.5,
+            "cached_input": 1.0,
+            "cache_write_30m": 12.5,
+            "cache_write_12h": 25.0
+          }
+        },
+        "flex": {
+          "short_context": {
+            "input": 5.0,
+            "output": 25.0,
+            "cached_input": 0.5,
+            "cache_write_30m": 6.25,
+            "cache_write_12h": 12.5
+          },
+          "long_context": {
+            "input": 10.0,
+            "output": 37.5,
+            "cached_input": 1.0,
+            "cache_write_30m": 12.5,
+            "cache_write_12h": 25.0
+          }
+        },
+        "fast": {
+          "short_context": {
+            "input": 20.0,
+            "output": 100.0,
+            "cached_input": 2.0,
+            "cache_write_30m": 25.0,
+            "cache_write_12h": 50.0
+          },
+          "long_context": {
+            "input": 40.0,
+            "output": 150.0,
+            "cached_input": 4.0,
+            "cache_write_30m": 50.0,
+            "cache_write_12h": 100.0
+          }
+        },
+        "ultrafast": {
+          "short_context": {
+            "input": 60.0,
+            "output": 300.0,
+            "cached_input": 6.0,
+            "cache_write_30m": 75.0,
+            "cache_write_12h": 150.0
+          },
+          "long_context": {
+            "input": 120.0,
+            "output": 450.0,
+            "cached_input": 12.0,
+            "cache_write_30m": 150.0,
+            "cache_write_12h": 300.0
+          }
+        }
+      }
+    },
+    "gpt-6.1-sol": {
+      "display_name": "GPT-6.1 Sol",
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "service_tiers": {
+        "standard": {
+          "short_context": {
+            "input": 2.0,
+            "output": 10.0,
+            "cached_input": 0.1,
+            "cache_write_30m": 2.5,
+            "cache_write_12h": 5.0
+          },
+          "long_context": {
+            "input": 4.0,
+            "output": 15.0,
+            "cached_input": 0.2,
+            "cache_write_30m": 5.0,
+            "cache_write_12h": 10.0
+          }
+        },
+        "batch": {
+          "short_context": {
+            "input": 1.0,
+            "output": 5.0,
+            "cached_input": 0.05,
+            "cache_write_30m": 1.25,
+            "cache_write_12h": 2.5
+          },
+          "long_context": {
+            "input": 2.0,
+            "output": 7.5,
+            "cached_input": 0.1,
+            "cache_write_30m": 2.5,
+            "cache_write_12h": 5.0
+          }
+        },
+        "flex": {
+          "short_context": {
+            "input": 1.0,
+            "output": 5.0,
+            "cached_input": 0.05,
+            "cache_write_30m": 1.25,
+            "cache_write_12h": 2.5
+          },
+          "long_context": {
+            "input": 2.0,
+            "output": 7.5,
+            "cached_input": 0.1,
+            "cache_write_30m": 2.5,
+            "cache_write_12h": 5.0
+          }
+        },
+        "fast": {
+          "short_context": {
+            "input": 4.0,
+            "output": 20.0,
+            "cached_input": 0.2,
+            "cache_write_30m": 5.0,
+            "cache_write_12h": 10.0
+          },
+          "long_context": {
+            "input": 8.0,
+            "output": 30.0,
+            "cached_input": 0.4,
+            "cache_write_30m": 10.0,
+            "cache_write_12h": 20.0
+          }
+        },
+        "ultrafast": {
+          "short_context": {
+            "input": 12.0,
+            "output": 60.0,
+            "cached_input": 0.6,
+            "cache_write_30m": 15.0,
+            "cache_write_12h": 30.0
+          },
+          "long_context": {
+            "input": 24.0,
+            "output": 90.0,
+            "cached_input": 1.2,
+            "cache_write_30m": 30.0,
+            "cache_write_12h": 60.0
+          }
+        }
+      }
+    },
+    "gpt-6.1-terra": {
+      "display_name": "GPT-6.1 Terra",
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+      "service_tiers": {
+        "standard": {
+          "short_context": {
+            "input": 1.0,
+            "output": 5.0,
+            "cached_input": 0.05,
+            "cache_write_30m": 1.25,
+            "cache_write_12h": 2.5
+          },
+          "long_context": {
+            "input": 2.0,
+            "output": 7.5,
+            "cached_input": 0.1,
+            "cache_write_30m": 2.5,
+            "cache_write_12h": 5.0
+          }
+        },
+        "batch": {
+          "short_context": {
+            "input": 0.5,
+            "output": 2.5,
+            "cached_input": 0.025,
+            "cache_write_30m": 0.625,
+            "cache_write_12h": 1.25
+          },
+          "long_context": {
+            "input": 1.0,
+            "output": 3.75,
+            "cached_input": 0.05,
+            "cache_write_30m": 1.25,
+            "cache_write_12h": 2.5
+          }
+        },
+        "flex": {
+          "short_context": {
+            "input": 0.5,
+            "output": 2.5,
+            "cached_input": 0.025,
+            "cache_write_30m": 0.625,
+            "cache_write_12h": 1.25
+          },
+          "long_context": {
+            "input": 1.0,
+            "output": 3.75,
+            "cached_input": 0.05,
+            "cache_write_30m": 1.25,
+            "cache_write_12h": 2.5
+          }
+        },
+        "fast": {
+          "short_context": {
+            "input": 2.0,
+            "output": 10.0,
+            "cached_input": 0.1,
+            "cache_write_30m": 2.5,
+            "cache_write_12h": 5.0
+          },
+          "long_context": {
+            "input": 4.0,
+            "output": 15.0,
+            "cached_input": 0.2,
+            "cache_write_30m": 5.0,
+            "cache_write_12h": 10.0
+          }
+        }
+      }
+    },
+    "gpt-6-luna": {
+      "display_name": "GPT-6 Luna",
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "service_tiers": {
+        "standard": {
+          "short_context": {
+            "input": 0.1,
+            "output": 0.5,
+            "cached_input": 0.01,
+            "cache_write_30m": 0.125,
+            "cache_write_12h": 0.25
+          },
+          "long_context": {
+            "input": 0.2,
+            "output": 0.75,
+            "cached_input": 0.02,
+            "cache_write_30m": 0.25,
+            "cache_write_12h": 0.5
+          }
+        },
+        "batch": {
+          "short_context": {
+            "input": 0.05,
+            "output": 0.25,
+            "cached_input": 0.005,
+            "cache_write_30m": 0.0625,
+            "cache_write_12h": 0.125
+          },
+          "long_context": {
+            "input": 0.1,
+            "output": 0.375,
+            "cached_input": 0.01,
+            "cache_write_30m": 0.125,
+            "cache_write_12h": 0.25
+          }
+        },
+        "flex": {
+          "short_context": {
+            "input": 0.05,
+            "output": 0.25,
+            "cached_input": 0.005,
+            "cache_write_30m": 0.0625,
+            "cache_write_12h": 0.125
+          },
+          "long_context": {
+            "input": 0.1,
+            "output": 0.375,
+            "cached_input": 0.01,
+            "cache_write_30m": 0.125,
+            "cache_write_12h": 0.25
+          }
+        },
+        "fast": {
+          "short_context": {
+            "input": 0.2,
+            "output": 1.0,
+            "cached_input": 0.02,
+            "cache_write_30m": 0.25,
+            "cache_write_12h": 0.5
+          },
+          "long_context": {
+            "input": 0.4,
+            "output": 1.5,
+            "cached_input": 0.04,
+            "cache_write_30m": 0.5,
+            "cache_write_12h": 1.0
+          }
+        }
+      }
+    },
+    "gpt-6-sol": {
+      "display_name": "GPT-6 Sol",
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+      "service_tiers": {
+        "standard": {
+          "short_context": {
+            "input": 2.0,
+            "output": 10.0,
+            "cached_input": 0.2,
+            "cache_write_30m": 2.5,
+            "cache_write_12h": 5.0
+          },
+          "long_context": {
+            "input": 4.0,
+            "output": 15.0,
+            "cached_input": 0.4,
+            "cache_write_30m": 5.0,
+            "cache_write_12h": 10.0
+          }
+        },
+        "batch": {
+          "short_context": {
+            "input": 1.0,
+            "output": 5.0,
+            "cached_input": 0.1,
+            "cache_write_30m": 1.25,
+            "cache_write_12h": 2.5
+          },
+          "long_context": {
+            "input": 2.0,
+            "output": 7.5,
+            "cached_input": 0.2,
+            "cache_write_30m": 2.5,
+            "cache_write_12h": 5.0
+          }
+        },
+        "flex": {
+          "short_context": {
+            "input": 1.0,
+            "output": 5.0,
+            "cached_input": 0.1,
+            "cache_write_30m": 1.25,
+            "cache_write_12h": 2.5
+          },
+          "long_context": {
+            "input": 2.0,
+            "output": 7.5,
+            "cached_input": 0.2,
+            "cache_write_30m": 2.5,
+            "cache_write_12h": 5.0
+          }
+        },
+        "fast": {
+          "short_context": {
+            "input": 4.0,
+            "output": 20.0,
+            "cached_input": 0.4,
+            "cache_write_30m": 5.0,
+            "cache_write_12h": 10.0
+          },
+          "long_context": {
+            "input": 8.0,
+            "output": 30.0,
+            "cached_input": 0.8,
+            "cache_write_30m": 10.0,
+            "cache_write_12h": 20.0
+          }
+        }
+      }
+    }
+  }
+}
