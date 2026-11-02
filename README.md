@@ -52,6 +52,39 @@ Release notes here.
 Note: if the version includes dots, set `slug` explicitly to keep the
 exact URL (otherwise Astro will slugify `1.1` to `1-1`).
 
+### Download details
+
+The homepage and downloads page share the latest appcast release's metadata
+(selected by publication date). Both calculate size and SHA-256 from
+`public/downloads/Tokage.dmg` during the build. The build rejects a checksum,
+enclosure size, or URL mismatch, and rejects a latest release without `download`
+metadata. Historical entries do not need this metadata.
+
+After final signing, notarization, and packaging, inspect the app **inside the
+shipped DMG**. Confirm `CFBundleShortVersionString` and `CFBundleVersion` match the
+appcast; use `LSMinimumSystemVersion` for the macOS requirement. Verify Apple's
+notarization with `xcrun stapler validate /path/to/Tokage.app` and
+`spctl --assess --verbose=4 --type execute /path/to/Tokage.app`.
+Set `notarization: verified` only with successful evidence; use `unknown` when
+verification is unavailable. Use `not-notarized` only when explicitly established,
+not merely because no stapled ticket was found.
+
+Add this to the latest appcast entry, using the final DMG's
+`shasum -a 256 public/downloads/Tokage.dmg` output:
+
+```yaml
+download:
+  minimumMacOS: "15.6"
+  sha256: <64 lowercase hexadecimal characters>
+  notarization: verified
+```
+
+Update `enclosure.length` to the DMG's exact byte count and run `bun test` followed
+by `bun run build`. Reverify these fields whenever the DMG changes. For the current
+1.2.7 artifact, the bundled Info.plist reports version 1.2.7, build 10, and macOS
+15.6; on 2026-11-02, stapler validation passed and Gatekeeper reported
+`accepted` / `source=Notarized Developer ID` for the bundled app.
+
 ## Commands
 
 | Command        | Action                                      |

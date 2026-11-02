@@ -24,6 +24,11 @@ const appcast = defineCollection({
       edSignature: z.string(),
     }),
     releaseNotesLink: z.string().url(),
+    download: z.object({
+      minimumMacOS: z.string().regex(/^\d+\.\d+(?:\.\d+)?$/),
+      sha256: z.string().regex(/^[a-f0-9]{64}$/),
+      notarization: z.enum(["verified", "not-notarized", "unknown"]),
+    }).optional(),
   }),
 });
 

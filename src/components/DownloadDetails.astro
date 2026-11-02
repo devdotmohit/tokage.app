@@ -1,0 +1,57 @@
+---
+import type { getLatestDownload } from "../lib/download";
+
+interface Props {
+  release: Awaited<ReturnType<typeof getLatestDownload>>;
+  theme?: "light" | "dark";
+}
+const { release, theme = "light" } = Astro.props;
+---
+
+<div class:list={["download-details", theme]}>
+  <ul class="facts" aria-label="Download details">
+    <li>Version {release.version}</li>
+    <li>macOS {release.minimumMacOS} or later</li>
+    <li title={`${release.bytes.toLocaleString("en-US")} bytes`}>{release.size}</li>
+    <li>{release.notarizationLabel}</li>
+  </ul>
+  <div class="checksum" data-download-checksum>
+    <div class="checksum-heading">
+      <span>SHA-256</span>
+      <button type="button" hidden>Copy checksum</button>
+      <span class="copy-status" role="status"></span>
+    </div>
+    <code>{release.sha256}</code>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-download-checksum]").forEach((container) => {
+    const button = container.querySelector("button");
+    const code = container.querySelector("code");
+    const status = container.querySelector<HTMLElement>("[role=status]");
+    if (!button || !code || !status || !navigator.clipboard) return;
+    button.hidden = false;
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent?.trim() ?? "");
+        status.textContent = "Copied";
+      } catch {
+        status.textContent = "Select the checksum to copy it manually.";
+      }
+    });
+  });
+</script>
+
+<style>
+  .download-details { width: 100%; max-width: 42rem; min-width: 0; font-size: 0.85rem; line-height: 1.6; text-align: left; color: #3b4551; }
+  .dark { color: #9ca3af; }
+  .facts { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; list-style: none; margin: 0; padding: 0; }
+  .checksum { margin-top: 0.85rem; }
+  .checksum-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem; }
+  button { font: inherit; color: #075d4a; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .dark button { color: #6ee7b7; }
+  button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  code { display: block; margin-top: 0.3rem; overflow-wrap: anywhere; user-select: all; font-size: 0.8rem; }
+  .copy-status { font-size: 0.8rem; }
+</style>

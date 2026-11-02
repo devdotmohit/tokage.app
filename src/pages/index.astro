@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+import DownloadDetails from "../components/DownloadDetails.astro";
+import { getLatestDownload } from "../lib/download";
+const release = await getLatestDownload();
 ---
 
 <html lang="en" class="bg-[#050505]">
@@ -169,10 +172,10 @@ import "../styles/global.css";
 						Scans local session logs for clean totals with one-click refresh.
 					</p>
 					<div
-						class="flex flex-col sm:flex-row gap-4 items-center mb-16"
+						class="flex flex-col sm:flex-row gap-4 items-center mb-5"
 					>
 						<a
-							href="/downloads/Tokage.dmg"
+							href={release.url}
 							class="bg-white text-black px-8 py-3 font-bold hover:bg-[#10b981] hover:text-black transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
 						>
 							Download for macOS
@@ -194,6 +197,9 @@ import "../styles/global.css";
 							</svg>
 							View on GitHub
 						</a>
+					</div>
+					<div class="w-full max-w-2xl mb-16">
+						<DownloadDetails release={release} theme="dark" />
 					</div>
 				</div>
 

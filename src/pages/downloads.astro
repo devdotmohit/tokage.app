@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+import DownloadDetails from "../components/DownloadDetails.astro";
+import { getLatestDownload } from "../lib/download";
+const release = await getLatestDownload();
 const year = new Date().getFullYear();
 ---
 
@@ -72,7 +75,7 @@ const year = new Date().getFullYear();
 				</a>
 				<a
 					class="text-[#6a747f] transition-colors hover:text-[#0d141b]"
-					href="/release-notes/1.2.7"
+					href={release.releaseNotesLink}
 				>
 					Release notes
 				</a>
@@ -108,47 +111,23 @@ const year = new Date().getFullYear();
 				class="relative overflow-hidden rounded-[22px] border border-[rgba(13,20,27,0.08)] bg-[#fbf8f1] p-7 shadow-[0_22px_60px_rgba(13,20,27,0.18)] before:pointer-events-none before:absolute before:inset-4 before:rounded-[18px] before:bg-[radial-gradient(circle_at_top_left,rgba(17,141,111,0.18),transparent_65%)] before:opacity-80 before:content-['']"
 			>
 				<div class="relative z-10 grid gap-[18px]">
-					<h2 class="m-0 text-[1.2rem]">Tokage 1.2.7</h2>
-					<div class="grid gap-2.5 text-[0.95rem] text-[#3b4551]">
-						<div>
-							Version: <strong
-								class="font-semibold text-[#075d4a]">1.2.7</strong
-							>
-						</div>
-						<div>
-							Build: <strong class="font-semibold text-[#075d4a]"
-								>10</strong
-							>
-						</div>
-						<div>
-							Format: <strong class="font-semibold text-[#075d4a]"
-								>macOS DMG</strong
-							>
-						</div>
-						<div>
-							Size: <strong class="font-semibold text-[#075d4a]"
-								>1.58 MB</strong
-							>
-						</div>
-					</div>
+					<h2 class="m-0 text-[1.2rem]">Tokage {release.version}</h2>
+					<p class="m-0 text-[0.95rem] text-[#3b4551]">macOS DMG · Build {release.build}</p>
 					<div class="flex flex-wrap items-center gap-3.5">
 						<a
 							class="inline-flex items-center justify-center rounded-full bg-[#0c8e6f] px-5 py-3 font-semibold text-white shadow-[0_16px_40px_rgba(12,142,111,0.3)] transition-colors hover:bg-[#075d4a]"
-							href="/downloads/Tokage.dmg"
+							href={release.url}
 						>
 							Download DMG
 						</a>
 						<a
 							class="text-[0.95rem] text-[#6a747f] transition-colors hover:text-[#0d141b]"
-							href="/release-notes/1.2.7"
+							href={release.releaseNotesLink}
 						>
 							Read release notes
 						</a>
 					</div>
-					<div class="text-[0.9rem] text-[#6a747f]">
-						You can replace the DMG at `/downloads/Tokage.dmg` when
-						a new build is ready.
-					</div>
+					<DownloadDetails release={release} />
 				</div>
 			</section>
 		</main>
